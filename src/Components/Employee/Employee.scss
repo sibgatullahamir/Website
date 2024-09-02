@@ -1,0 +1,114 @@
+@import "../Css/mixin.scss";
+.employee {
+  width: 100%;
+  height: 100vh;
+  background: url("/public/Empbg.png");
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include sm {
+    margin-top: 80px;
+    height: 40rem;
+  }
+
+  .fix-bg {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    max-width: 1366px;
+
+    @include sm {
+      flex-direction: column-reverse;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .left {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding-left: 10rem;
+      padding-top: 4rem;
+
+      @include sm {
+        width: 18rem;
+        padding-left: 0 !important;
+        padding-top: 6rem;
+      }
+
+      h3 {
+        margin: 0;
+        font-size: 2rem;
+        color: rgb(58, 1, 108);
+        margin-bottom: 1rem;
+        @include sm {
+          width: 100%;
+          font-size: 1.3rem;
+          text-align: center;
+          display: none;
+        }
+      }
+      h4 {
+        margin: 0;
+        margin-bottom: 1rem;
+        @include sm {
+          font-size: 0.85rem;
+        }
+      }
+    }
+    .right {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+
+      @include sm {
+        width: 22rem;
+        margin-top: 3rem;
+      }
+      .back-bg {
+        width: 20rem;
+        height: 20rem;
+        border-radius: 50%;
+        background-color: #091f5b;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+        @include sm {
+          width: 9rem;
+          height: 9rem;
+          left: 7.5rem;
+        }
+      }
+      .front-bg {
+        width: 20rem;
+        height: 20rem;
+        border-radius: 50%;
+        background-color: white;
+        position: absolute;
+        top: 50%;
+        left: 5rem;
+        transform: translateY(-50%);
+        z-index: 2;
+        @include sm {
+          width: 9rem;
+          height: 9rem;
+          left: 6.5rem;
+        }
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          object-fit: cover;
+          object-position: top;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  place-items: center;
+  align-items: center;
+  justify-content: center;
+  font-family: Poppins, "Times New Roman";
+  box-sizing: border-box !important;
+}
+
+body h1,
+h2,
+p {
+  margin: 0;
+}
+
+#root {
+  overflow: hidden;
+}
+
+@media screen and (min-width: 1600px) {
+  html {
+    font-size: 20px !important;
+  }
+}
+@media screen and (min-width: 1200px) and (max-width: 1599px) {
+  html {
+    font-size: 16px !important;
+  }
+}
+@media screen and (min-width: 900px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media screen and (min-width: 700px) and (max-width: 800px) {
+  html {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 600px) and (max-width: 700px) {
+  html {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 600px) {
+  html {
+    font-size: 16px;
+  }
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

@@ -1,0 +1,26 @@
+.footer {
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  background: #f0f0f0;
+  // padding: 2rem;
+
+  .top {
+    width: 100%;
+    max-width: 1500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .bottom {
+    width: 93%;
+    max-width: 1366px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

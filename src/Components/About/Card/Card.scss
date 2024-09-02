@@ -1,0 +1,48 @@
+.card {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1366px;
+
+  .left {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 15px;
+
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin: 0;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1rem;
+      color: rgb(53, 53, 53);
+      font-weight: 500;
+      margin: 0;
+    }
+    .message {
+      font-size: 1rem;
+      color: rgb(160, 116, 5);
+      font-weight: 600;
+    }
+    h5 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: rgb(50, 49, 49);
+      margin: 0;
+    }
+  }
+
+  .right {
+    width: 45%;
+    img {
+      width: 100%;
+      border-radius: 20px;
+    }
+  }
+}

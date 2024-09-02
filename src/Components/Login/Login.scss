@@ -1,0 +1,257 @@
+@import "../Css/mixin.scss";
+.loginPg {
+  width: 100vw;
+  height: calc(100vh - 100px);
+  padding: 2rem 0;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .sm-circle {
+    width: 8rem;
+    height: 8rem;
+    background-color: #fbe98e;
+    border-radius: 50%;
+    position: absolute;
+    top: -44px;
+    left: -44px;
+    z-index: -1;
+  }
+  .md-circle {
+    width: 15rem;
+    height: 15rem;
+    // background-color: #FBE98E;
+    border: 3.5rem solid #fbe98e;
+    border-radius: 50%;
+    position: absolute;
+    top: -150px;
+    left: -150px;
+    z-index: -1;
+  }
+  .lg-circle {
+    width: 30rem;
+    height: 30rem;
+    // background-color: #FBE98E;
+    border: 4.2rem solid #f8d72d;
+    border-radius: 50%;
+    position: absolute;
+    top: -270px;
+    left: -270px;
+    z-index: -1;
+  }
+
+  .sm-right {
+    top: unset;
+    left: unset;
+    bottom: -44px;
+    right: -44px;
+  }
+  .md-right {
+    top: unset;
+    left: unset;
+    bottom: -150px;
+    right: -150px;
+  }
+  .lg-right {
+    top: unset;
+    left: unset;
+    bottom: -270px;
+    right: -270px;
+  }
+
+  .login-form {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // padding: 2rem;
+    gap: 10px;
+    position: relative;
+    // gap: 50px;
+
+    @include ph {
+      width: 22rem;
+    }
+    @include sm {
+      width: 34rem;
+    }
+
+    h2 {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 40px;
+    }
+
+    .login-wrapper {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+      gap: 20px;
+      background-color: #d9d9d9a8;
+      padding: 4rem 0;
+      position: relative;
+      @include ph {
+        width: 20rem !important;
+      }
+
+      .login-img {
+        width: 3.5rem;
+        position: absolute;
+        top: -1rem;
+        z-index: 9;
+      }
+
+      .input-tag {
+        width: 60%;
+        height: 2rem;
+        background-color: white;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-start;
+        align-items: flex-end;
+        position: relative;
+        border-radius: 10px;
+        margin-top: 20px;
+        input {
+          width: 100%;
+          height: 2rem;
+          border: none;
+          outline: none;
+          padding-left: 40px;
+          border-radius: 10px;
+          // position: absolute;
+          @include ph {
+            padding-left: 31px;
+          }
+        }
+
+        img {
+          position: absolute;
+          width: 2rem;
+          // top: 0;
+          bottom: 15px;
+          left: 0;
+          @include sm {
+            bottom: 20px;
+          }
+          @include ph {
+            width: 1.75rem;
+            bottom: 17px;
+          }
+        }
+        .hide-password {
+          position: absolute;
+          left: unset;
+          width: 1.2rem;
+          right: 1rem;
+          cursor: pointer;
+          @include ph {
+            right: 0.5rem;
+            width: 1rem;
+          }
+        }
+        .show-password {
+          position: absolute;
+          left: unset;
+          width: 1.2rem;
+          right: 1rem;
+          cursor: pointer;
+          @include ph {
+            right: 0.5rem;
+            width: 1rem;
+          }
+        }
+      }
+
+      .forgot-pswrd {
+        width: 50%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.65rem;
+        color: #0078d4;
+        cursor: pointer;
+      }
+
+      .login-btns {
+        width: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        button {
+          width: 6rem;
+          height: 2rem;
+          background-color: #0078d4;
+          border: none;
+          outline: none;
+          color: white;
+          cursor: pointer;
+          border-radius: 10px;
+        }
+        .google-auth {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1.5rem;
+          background-color: white;
+          @include sm {
+            font-size: 1rem;
+          }
+        }
+      }
+
+      .not-a-member {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.85rem;
+        gap: 5px;
+      }
+    }
+  }
+}
+
+// invalid user-------------------------------------------->
+.invalid-user {
+  width: 20rem;
+  height: 15rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 20%;
+  // transform: translateY(50%);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  h1 {
+    margin: 0;
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  button {
+    background-color: #0078d4;
+    color: white;
+    width: 5rem;
+    height: 2rem;
+    border: none !important;
+    outline: none !important;
+    cursor: pointer;
+  }
+}
