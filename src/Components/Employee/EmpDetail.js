@@ -7,7 +7,7 @@ const EmpDetails = [
     post: "Chief Technical Officer",
     qualifications:
       "Bachelor Of Technology In Computer Science & Engineering from Accurate Institute Of Management & Technology",
-    img: "/EmpDetails/amirCTO.jpeg",
+    img: "/EmpDetails/amir.jpeg",
   },
   {
     name: "Mo. Kaif Siddique",
