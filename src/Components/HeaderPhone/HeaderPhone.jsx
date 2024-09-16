@@ -31,7 +31,7 @@ const HeaderPhone = () => {
         <img src="/logo.png" alt="" />
       </div>
       <div className="right">
-        <h5 onClick={() => navigate("/contact-us")}>Book a Demo</h5>
+        <h5 onClick={() => navigate("/contact-us")}>Contact Us</h5>
         <div
           className="hamMenu"
           style={showHiddenMenu ? { background: "#003e71" } : {}}

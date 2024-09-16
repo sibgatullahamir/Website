@@ -5,10 +5,12 @@ import twitter from "/twitter.png";
 import insta from "/insta.png";
 import linkedIn from "/linkedIn.png";
 import CustomSelect from "../../CustomComp/CustomSelect"; // Import the custom select component
+import { useNavigate } from "react-router-dom";
 
 const Contact = () => {
   const [code, setCode] = useState("+91"); // Country code state
   const [value, setValue] = useState(""); // Phone number state
+  const navigate = useNavigate();
 
   // Function to handle input changes and restrict to numbers
   const restrictNum = (e) => {
@@ -18,6 +20,14 @@ const Contact = () => {
 
   return (
     <div className="w-full h-screen p-4 flex justify-center items-center max-sm:h-auto">
+      {/* Logo fixed at top left */}
+      <img
+        src="/back-icon.svg"
+        alt=""
+        className="w-12 fixed top-6 left-8 cursor-pointer max-sm:w-8 max-sm:top-8 max-sm:absolute"
+        onClick={() => navigate("/")}
+      />
+
       {/* inner background */}
       <div
         className="w-full h-full flex rounded-2xl border-2 border-black 2xl:w-[1500px] 2xl:h-[40rem] max-sm:flex-col max-sm:gap-12"
@@ -28,9 +38,17 @@ const Contact = () => {
           {/* left-top */}
           <div className="w-full flex flex-col justify-center items-start pl-20 gap-2 max-sm:pl-10 max-sm:pt-20">
             <h2 className="text-3xl font-medium max-sm:text-2xl">Contact Us</h2>
-            <p className="w-64 text-sm max-sm:text-xs">
-              Email, Call, or complete the form to learn how Untitled can solve
-              your messaging problem.
+            <p
+              className="text-sm max-sm:text-xs"
+              style={
+                window.innerWidth > 900
+                  ? { width: "25rem" }
+                  : { width: "16rem" }
+              }
+            >
+              We value your feedback and are committed to providing the
+              assistance you need. Reach out to us for any concerns or queries,
+              and we’ll be happy to guide you.
             </p>
             <p className="w-64 text-sm font-semibold max-sm:text-xs ">
               {" "}
@@ -43,17 +61,19 @@ const Contact = () => {
 
           {/* left-bottom */}
           <p className="w-full text-sm px-10 font-light max-sm:text-xs">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis, iure.
-            Corrupti commodi modi natus quis quisquam debitis amet placeat?
-            Dolores repellat, enim eum eos amet reprehenderit laudantium at
-            fugit. Architecto.
+            We appreciate your interest and are here to assist with any
+            inquiries or support you may need. Whether you have a question,
+            require assistance, or wish to share your thoughts, we're just a
+            message away. Feel free to contact us via email, phone, or by
+            filling out the form below, and our team will respond promptly to
+            help you.
           </p>
 
           {/* left-socialmedia */}
           <div className="social-links w-full pl-8 ">
-            <div className="links w-full flex gap-2 cursor-pointer">
+            <div className="links w-full flex gap-1 cursor-pointer">
               <div
-                className="circle border-2 border-black p-2 rounded-full max-sm:scale-75"
+                className="circle border-2 border-black p-2 rounded-full scale-75"
                 onClick={() =>
                   window.open(
                     "https://www.facebook.com/profile.php?id=61560473970919&mibextid=ZbWKwL",
@@ -64,7 +84,7 @@ const Contact = () => {
                 <img src={fb} alt="" className="fb-img w-4 h-4" />
               </div>
               <div
-                className="circle border-2 border-black p-2 rounded-full max-sm:scale-75"
+                className="circle border-2 border-black p-2 rounded-full scale-75"
                 onClick={() =>
                   window.open(
                     "https://x.com/placement_7541?t=TgRX8eZOCi47PlUr5tTddA&s=09",
@@ -75,7 +95,7 @@ const Contact = () => {
                 <img src={twitter} alt="" className="w-4 h-4" />
               </div>
               <div
-                className="circle border-2 border-black p-2 rounded-full max-sm:scale-75"
+                className="circle border-2 border-black p-2 rounded-full scale-75"
                 onClick={() =>
                   window.open(
                     "https://www.instagram.com/placementplaza_/",
@@ -86,7 +106,7 @@ const Contact = () => {
                 <img src={insta} alt="" className="w-4 h-4" />
               </div>
               <div
-                className="circle border-2 border-black p-2 rounded-full max-sm:scale-75"
+                className="circle border-2 border-black p-2 rounded-full scale-75"
                 onClick={() =>
                   window.open(
                     "https://www.linkedin.com/company/placementplaza/",
