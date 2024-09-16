@@ -3,7 +3,8 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import About from "./Components/About/About";
 import Case from "./Components/CaseStudies/Case";
-import Contact from "./Components/Contact/Contact";
+import Contact from "./Components/BookADemo/Contact";
+import ContactUs from "./Components/Contact/Contact";
 import Login from "./Components/Login/Login";
 import Employee from "./Components/Employee/Employee";
 import Pricing from "./Components/Pricing/Pricing";
@@ -30,7 +31,8 @@ const App = () => {
         <Route path="/" Component={Home} />
         <Route path="/about-us" Component={About} />
         <Route path="/case" Component={Case} />
-        <Route path="/contact-us" Component={Contact} />
+        <Route path="/book-a-demo" Component={Contact} />
+        <Route path="/contact-us" Component={ContactUs} />
         <Route path="/login" Component={Login} />
         <Route path="/employee_detail/:id" Component={Employee} />
         <Route path="/pricing" Component={Pricing} />

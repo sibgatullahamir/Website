@@ -88,7 +88,7 @@ const Header = () => {
             className="p-2.5 border border-gray-400 bg-[#003e71] text-[16px] text-white font-medium cursor-pointer rounded-lg transition-all duration-500 hover:bg-blue-100 hover:text-[#003e71]"
             onClick={() => navigate("/contact-us")}
           >
-            Book a Demo
+            Contact Us
           </button>
         </div>
       </div>

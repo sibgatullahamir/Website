@@ -37,10 +37,10 @@ const Pricing = () => {
       setOpacity();
       emailjs
         .sendForm(
-          "service_m17v3j7",
-          "template_cnbdd4e",
+          "service_vcwk9w9",
+          "template_2qs43ki",
           form.current,
-          "xtwUI5bJZIW5Pnl1F"
+          "kGsrg0oe36rKgRt_5"
         )
         .then(
           (result) => {
@@ -109,14 +109,7 @@ const Pricing = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (emailRegex.test(value)) {
-      // Extract the domain from the email
-      const domain = value.split("@")[1];
-      // Check if the domain is not in the list of free email domains
-      if (freeEmailDomains.includes(domain)) {
-        setIsValid(true);
-      } else {
-        setIsValid(false);
-      }
+      setIsValid(true);
     } else {
       setIsValid(false);
     }

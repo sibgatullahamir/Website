@@ -128,9 +128,9 @@ const Home = () => {
           <motion.div className="btns">
             <motion.div
               className="talk"
-              onClick={() => navigate("/contact-us")}
+              onClick={() => navigate("/book-a-demo")}
             >
-              Let's Talk
+              Book a demo
             </motion.div>
             <motion.div
               className="tutorial"
