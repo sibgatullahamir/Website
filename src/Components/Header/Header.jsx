@@ -1,21 +1,14 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Solution from "./Solution";
-import { AuthContext } from "../../context/AuthContetxt";
 
 const Header = () => {
   // Getting the login state
-  const { loginState, setLoginState } = useContext(AuthContext);
 
   const navigate = useNavigate();
   const [isSolnHover, setIsSolnHover] = useState(false);
   const [isAboutHover, setIsAboutHover] = useState(false);
   const [isResourceHover, setIsResourceHover] = useState(false);
-
-  const handleLoginLogout = () => {
-    if (loginState) setLoginState(false);
-    else navigate("/login");
-  };
 
   return (
     <div
@@ -65,24 +58,16 @@ const Header = () => {
             <Solution state={isResourceHover} type="resource" />
           </li>
           <li
-            onClick={() =>
-              !loginState
-                ? navigate("/pricing")
-                : (window.location.href =
-                    "http://webmail.placementplaza.com/?_task=mail&_mbox=INBOX")
-            }
+            onClick={() => navigate("/pricing")}
             className="list-none text-[#003e71] font-medium cursor-pointer p-2.5 transition-all duration-500"
           >
-            {loginState ? "Web mail" : "Pricing"}
+            {"Pricing"}
           </li>
         </ul>
 
         <div className="flex-1 flex justify-end items-center gap-2.5">
-          <button
-            className="p-2.5 border border-gray-400 bg-white text-[16px] text-[#003e71] font-semibold cursor-pointer rounded-lg transition-all duration-500 hover:bg-[#003e71] hover:text-white"
-            onClick={handleLoginLogout}
-          >
-            {loginState ? "Log Out" : "Log In"}
+          <button className="p-2.5 border border-gray-400 bg-white text-[16px] text-[#003e71] font-semibold cursor-pointer rounded-lg transition-all duration-500 hover:bg-[#003e71] hover:text-white">
+            {"Log In"}
           </button>
           <button
             className="p-2.5 border border-gray-400 bg-[#003e71] text-[16px] text-white font-medium cursor-pointer rounded-lg transition-all duration-500 hover:bg-blue-100 hover:text-[#003e71]"

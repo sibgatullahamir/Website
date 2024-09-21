@@ -3,7 +3,7 @@ import axios from "axios";
 export const fetchEmployeeDetails = async (id) => {
   try {
     const res = await axios.get(
-      "http://api.placementplaza.com/api/employees/getEmployee",
+      "http://localhost:5000/api/employees/getEmployee",
       {
         params: { id },
       }

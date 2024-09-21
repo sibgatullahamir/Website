@@ -3,54 +3,59 @@ import "./Employee.scss";
 import { useParams } from "react-router-dom";
 import { fetchEmployeeDetails } from "../../action/fetchEmployee.js";
 import axios from "axios";
+
 function Employee() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null); // Use null to distinguish between loading and no data
   const [roleId, setRoleId] = useState("");
   const [designation, setDesignation] = useState("");
   const { id } = useParams();
 
-  // Mathching the data from backend
-
+  // Fetch employee details
   useEffect(() => {
     const getEmployee = async () => {
-      const res = await fetchEmployeeDetails(id);
-      setData(res);
+      try {
+        const res = await fetchEmployeeDetails(id);
+        if (res && res.role_id) {
+          setData(res);
+          setRoleId(res.role_id);
+        }
+      } catch (error) {
+        console.error("Error fetching employee details:", error);
+      }
     };
     getEmployee();
-  }, []);
+  }, [id]);
 
+  // Fetch role details when roleId changes
   useEffect(() => {
-    setData(data);
-    setRoleId(data.role_id);
-  }, [data]);
-
-  const getRoleById = async () => {
-    try {
-      const res = await axios.get(
-        "http://api.placementplaza.com/api/orgStructure/jobRoles/getRoleById",
-        {
-          params: { roleId },
+    const getRoleById = async () => {
+      if (roleId) {
+        try {
+          const res = await axios.get(
+            "http://localhost:5000/api/orgStructure/jobRoles/getRoleById",
+            {
+              params: { roleId },
+            }
+          );
+          if (res.status === 200) {
+            setDesignation(res.data.role);
+            console.log(res);
+          }
+        } catch (error) {
+          if (error.response && error.response.status === 400) {
+            console.error("Invalid Role ID:", error.response.data);
+          } else {
+            console.error("Error fetching role by id:", error);
+          }
         }
-      );
-      return res.data.role;
-    } catch (error) {
-      console.log(error, "Frontend error in fetching role by id");
-    }
-  };
-
-  useEffect(() => {
-    const setDesig = async () => {
-      const res = await getRoleById();
-      setDesignation(res);
+      }
     };
-    setDesig();
-  }, [data]);
-
-  console.log(data);
+    getRoleById();
+  }, [roleId]);
 
   return (
     <div className="employee">
-      {data.length != 0 ? (
+      {data ? (
         <div className="fix-bg">
           <div className="left">
             <h3>Employee Information</h3>
@@ -98,7 +103,7 @@ function Employee() {
           </div>
         </div>
       ) : (
-        " No Data Found "
+        "No Data Found"
       )}
     </div>
   );

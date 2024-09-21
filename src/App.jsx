@@ -5,7 +5,7 @@ import About from "./Components/About/About";
 import Case from "./Components/CaseStudies/Case";
 import Contact from "./Components/BookADemo/Contact";
 import ContactUs from "./Components/Contact/Contact";
-import Login from "./Components/Login/Login";
+// import Login from "./Components/Login/Login";
 import Employee from "./Components/Employee/Employee";
 import Pricing from "./Components/Pricing/Pricing";
 import UndefinedRoute from "./Components/UndefinedRoute/UndefinedRoute";
@@ -33,7 +33,7 @@ const App = () => {
         <Route path="/case" Component={Case} />
         <Route path="/book-a-demo" Component={Contact} />
         <Route path="/contact-us" Component={ContactUs} />
-        <Route path="/login" Component={Login} />
+        {/* <Route path="/login" Component={Login} /> */}
         <Route path="/employee_detail/:id" Component={Employee} />
         <Route path="/pricing" Component={Pricing} />
         <Route path="*" element={<UndefinedRoute />} />

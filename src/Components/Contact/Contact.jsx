@@ -176,7 +176,7 @@ const Contact = () => {
                   type="number"
                   placeholder="Number"
                   onChange={restrictNum}
-                  style={{ width: "65%" }}
+                  style={{ width: "16rem" }}
                   className="py-1 px-2 border-none outline-none rounded-xl text-sm"
                 />
               </span>

@@ -172,7 +172,7 @@ const Pricing = () => {
                     placeholder="Number"
                     // maxLength={13}
                     onChange={handleChange}
-                    style={{ width: "70%" }}
+                    style={{ width: "13.2rem" }}
                   />
                 </span>
               </div>
