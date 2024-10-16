@@ -57,6 +57,16 @@ const Header = () => {
             </span>
             <Solution state={isResourceHover} type="resource" />
           </li>
+
+          {/* start edited */}
+          <li
+            onClick={() => navigate("/blogmain")}
+            className="list-none text-[#003e71] font-medium cursor-pointer p-2.5 transition-all duration-500"
+          >
+            {"Blogs"}
+          </li>
+          {/* end edited */}
+
           <li
             onClick={() => navigate("/pricing")}
             className="list-none text-[#003e71] font-medium cursor-pointer p-2.5 transition-all duration-500"

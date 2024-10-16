@@ -73,12 +73,12 @@ const Solution = ({ state, type }) => {
       p: "Free in depth hirings for you",
       nav: "/",
     },
-    {
-      title: "Blogs",
-      img: <FaRegFileImage />,
-      p: "Stay up to date with HR news and blogs",
-      nav: "/",
-    },
+    // {
+    //   title: "Blogs",
+    //   img: <FaRegFileImage />,
+    //   p: "Stay up to date with HR news and blogs",
+    //   nav: "/",
+    // },
     {
       title: "HR Terms",
       img: <GrShieldSecurity />,

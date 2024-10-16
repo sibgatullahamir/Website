@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Router } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import About from "./Components/About/About";
 import Case from "./Components/CaseStudies/Case";
@@ -9,6 +9,9 @@ import ContactUs from "./Components/Contact/Contact";
 import Employee from "./Components/Employee/Employee";
 import Pricing from "./Components/Pricing/Pricing";
 import UndefinedRoute from "./Components/UndefinedRoute/UndefinedRoute";
+import BlogMain from "./Components/Blogs/BlogMain";
+
+
 
 const App = () => {
   if (window.innerWidth === 900) window.location.reload();
@@ -18,6 +21,7 @@ const App = () => {
   }, [pathname]);
 
   return (
+
     <div
       style={{
         width: "100vw",
@@ -37,8 +41,12 @@ const App = () => {
         <Route path="/employee_detail/:id" Component={Employee} />
         <Route path="/pricing" Component={Pricing} />
         <Route path="*" element={<UndefinedRoute />} />
+        <Route path="/blogmain/*" element={<BlogMain />} /> {/* BlogMain will handle all blog routes */}
+
       </Routes>
     </div>
+
+
   );
 };
 
