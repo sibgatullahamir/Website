@@ -1,38 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link, useNavigate, useParams } from 'react-router-dom';
-
+import { FaSearch } from 'react-icons/fa';
 
 // Sample Blog Data
 const blogData = [
     {
         id: 1,
         title: "Understanding Payroll Systems",
-        content: "A comprehensive guide to managing payroll efficiently. Lorem ipsum dolor...",
-        fullContent: "This is the full content of the blog about Payroll Systems...",
+        content: "A payroll system is a software solution designed to manage and automate the process of compensating employees. It handles tasks such as calculating wages, withholding taxes, tracking work hours, managing employee benefits, and generating paychecks or direct deposits. Modern payroll systems integrate with accounting, timekeeping, and HR ...",
+        fullContent: "A payroll system is a software solution designed to manage and automate the process of compensating employees. It handles tasks such as calculating wages, withholding taxes, tracking work hours, managing employee benefits, and generating paychecks or direct deposits. Modern payroll systems integrate with accounting, timekeeping, and HR platforms, ensuring accuracy and compliance with tax laws. They streamline payroll processes, reduce errors, and enhance overall efficiency, allowing businesses to focus on growth and employee satisfaction.",
         image: "/public/pexels-pixabay-326055.jpg",
         category: "Payroll",
     },
     {
         id: 2,
         title: "Leave Management Best Practices",
-        content: "Tips for managing employee leaves effectively.",
-        fullContent: "This is the full content of the blog about Leave Management...",
+        content: "Leave management best practices ensure smooth operations and employee satisfaction. These include creating a clear leave policy that defines types of leave (e.g., vacation, sick, unpaid), setting up an easy-to-use leave management system, and ensuring transparency in leave balances.",
+        fullContent: "Leave management best practices ensure smooth operations and employee satisfaction. These include creating a clear leave policy that defines types of leave (e.g., vacation, sick, unpaid), setting up an easy-to-use leave management system, and ensuring transparency in leave balances. Automating approvals reduces delays and improves efficiency. Tracking leave data for insights on workforce productivity helps balance workloads during absences. Regularly reviewing and updating the leave policy ensures it aligns with legal requirements and company goals.",
         image: "https://via.placeholder.com/150",
         category: "Leave",
     },
     {
         id: 3,
         title: "Maximizing Bonus & Benefits for Employees",
-        content: "Discover ways to incentivize your workforce.",
-        fullContent: "This is the full content of the blog about Bonus & Benefits...",
+        content: "Discover ways to incentivize your workforce. Maximizing bonuses and benefits for employees boosts engagement, retention, and overall satisfaction. Offering performance-based bonuses tied to clear goals motivates employees to excel. Tailor benefits packages to meet diverse needs, including health insurance,",
+        fullContent: "Maximizing bonuses and benefits for employees boosts engagement, retention, and overall satisfaction. Offering performance-based bonuses tied to clear goals motivates employees to excel. Tailor benefits packages to meet diverse needs, including health insurance, retirement plans, and wellness programs. Flexible work options and professional development opportunities enhance work-life balance and skill growth. Regularly communicate the value of benefits to employees, and consider personalized incentives for top performers. Aligning rewards with company success fosters a positive, motivated workplace culture.",
         image: "https://via.placeholder.com/150",
         category: "Bonus & Benefits",
     },
     {
         id: 4,
         title: "Tax Compliance for Small Businesses",
-        content: "Stay on top of tax regulations and avoid penalties.",
-        fullContent: "This is the full content of the blog about Tax Compliance...",
+        content: "Stay on top of tax regulations and avoid penalties. Tax compliance for small businesses involves adhering to local, state, and federal tax laws to avoid penalties and ensure smooth operations. Key steps include registering for an Employer Identification Number (EIN), accurately tracking income and expenses, and filing tax returns on time.",
+        fullContent: "Tax compliance for small businesses involves adhering to local, state, and federal tax laws to avoid penalties and ensure smooth operations. Key steps include registering for an Employer Identification Number (EIN), accurately tracking income and expenses, and filing tax returns on time. Understanding different tax obligations like income tax, payroll tax, and sales tax is essential. Small businesses should maintain organized financial records, seek professional tax advice, and stay informed on changing tax regulations to remain compliant and optimize tax savings.",
         image: "https://via.placeholder.com/150",
         category: "Tax & Compliance",
     },
@@ -57,7 +57,7 @@ const Blog = ({ title, content, image, category, id }) => {
     };
 
     return (
-        <div className={`blog relative p-4 ${getBackgroundColor()} rounded-lg shadow-lg mb-6 top-10 pl-10 pr-10`}>
+        <div className={`blog relative p-4 ${getBackgroundColor()} rounded-lg shadow-lg mb-10 top-10 pl-10 pr-10`}>
             <div className="flex">
                 <div className="w-3/4">
                     <h2 className="text-2xl font-bold mb-2">{title}</h2>
@@ -69,7 +69,6 @@ const Blog = ({ title, content, image, category, id }) => {
                         Read More →
                     </button>
                 </div>
-
                 <div className="relative w-[26rem]">
                     <img
                         src={image}
@@ -106,10 +105,10 @@ const BlogDetails = () => {
     );
 };
 
-
 const BlogMain = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [activeCategory, setActiveCategory] = useState("All");
+    const [searchTerm, setSearchTerm] = useState("");  // Search term state
     const navigate = useNavigate();
 
     const handleReadMore = () => {
@@ -131,33 +130,30 @@ const BlogMain = () => {
         };
     }, []);
 
-    const filteredBlogs = activeCategory === "All"
-        ? blogData
-        : blogData.filter(blog => blog.category === activeCategory);
+    // Filter blogs based on category and search term
+    const filteredBlogs = blogData.filter((blog) => {
+        const matchesCategory = activeCategory === "All" || blog.category === activeCategory;
+        const matchesSearch = blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                              blog.content.toLowerCase().includes(searchTerm.toLowerCase());
+        return matchesCategory && matchesSearch;
+    });
 
     return (
         <div>
             <nav className="bg-black text-white fixed top-0 left-0 w-full z-10 h-24 flex items-center">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
                     <div className="flex justify-between items-center h-full">
-                        <div className="flex-shrink-0">
-                            <img className="w-24" src="/public/logo.png" alt="Logo" />
+                        <div
+                            className="cursor-pointer"
+                            onClick={() => navigate("/")}
+                        >
+                            <img src="./logo.png" alt="Logo" className="w-20" />
                         </div>
                         <div className="flex-1 text-center">
                             <div className="inline-flex space-x-8 text-3xl">
-                                <a href="#about-us" className="hover:text-gray-400">About Us</a>
-                                <a href="#resources" className="hover:text-gray-400">Resources</a>
-                                <a href="#why-us" className="hover:text-gray-400">Why Us?</a>
-                                <a href="#pricing" className="hover:text-gray-400">Pricing</a>
+                                <Link to="/about-us" className="hover:text-gray-400">About Us</Link>
+                                {/* <a href="#why-us" className="hover:text-gray-400">Why Us?</a> */}
                             </div>
-                        </div>
-                        <div>
-                            <button
-                                type="button"
-                                className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-lg  px-5 py-2.5 text-center me-2 mb-2"
-                            >
-                                Log in
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -183,7 +179,10 @@ const BlogMain = () => {
                                         type="text"
                                         placeholder="Search"
                                         className="w-full outline-none bg-transparent text-gray-600 text-sm"
+                                        value={searchTerm}  // Bind search input to state
+                                        onChange={(e) => setSearchTerm(e.target.value)}  // Update search term
                                     />
+                                    <FaSearch className="text-gray-500 ml-2 cursor-pointer text-xl" />
                                 </div>
 
                                 <div className="p-4 space-y-2 flex-1 overflow-y-auto">
