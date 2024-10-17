@@ -110,7 +110,8 @@ const blogData = [
     },
 ];
 
-const Blog = ({ title, content, image, category, id, index }) => {
+// Blog Component
+const Blog = ({ title, content, image, category, id }) => {
     const navigate = useNavigate();
 
     const getBackgroundColor = () => {
@@ -127,12 +128,9 @@ const Blog = ({ title, content, image, category, id, index }) => {
         navigate(`/blogmain/${id}`);
     };
 
-    const isEven = index % 2 === 0; // Check if index is even
-
     return (
         <div className={`blog relative p-4 ${getBackgroundColor()} rounded-lg shadow-lg mb-20 top-10 pl-10 pr-10`}>
-            <div className={`flex ${isEven ? 'flex-row' : 'flex-row-reverse'}`}>
-                {/* Content Section */}
+            <div className="flex">
                 <div className="w-3/4">
                     <h2 className="text-2xl font-bold mb-2">{title}</h2>
                     <p className="text-gray-700 mb-4 text-xl">{content}</p>
@@ -143,12 +141,11 @@ const Blog = ({ title, content, image, category, id, index }) => {
                         Read More →
                     </button>
                 </div>
-                {/* Image Section */}
                 <div className="relative w-[26rem]">
                     <img
                         src={image}
                         alt={title}
-                        className={`absolute top-10 ${isEven ? 'right-0' : 'right-44'} w- object-cover rounded-md transform translate-x-1/4 shadow-lg`}
+                        className="absolute top-10 right-0 w- object-cover rounded-md transform translate-x-1/4 shadow-lg"
                     />
                 </div>
             </div>
@@ -302,17 +299,8 @@ const BlogMain = () => {
                             </div>
 
                             <div className="relative ml-96 w-full pt-20 pb-4 px-20">
-                                {currentBlogs.map((blog, index) => (
-                                    <Blog
-                                        key={blog.id}
-                                        title={blog.title}
-                                        content={blog.content}
-                                        image={blog.image}
-                                        category={blog.category}
-                                        id={blog.id}
-                                        index={index}
-
-                                    />
+                                {currentBlogs.map((blog) => (
+                                    <Blog key={blog.id} title={blog.title} content={blog.content} image={blog.image} category={blog.category} id={blog.id} />
                                 ))}
 
                                 {/* Pagination Component */}
