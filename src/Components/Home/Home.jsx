@@ -48,25 +48,25 @@ const Home = () => {
       title: "Hire Domestic Talent",
       subTitle: "Hire Best Domestic Talent",
       des: "Hiring domestic and global talent involves defining your needs, exploring diverse talent pools through online platforms, and understanding legal requirements for international hiring. Remote work arrangements and cultural sensitivity are key considerations, along with offering competitive compensation and streamlining the hiring process. Providing support for new hires and fostering diversity and inclusion are vital for success. Continuous feedback ensures effective collaboration and ongoing improvement within your team.",
-      img: "/Hirings/talent.jpg",
+      img: "/hiringtalent.jpg",
     },
     {
       title: "Hire Contractors",
       subTitle: "Hire Contractors Worldwide",
       des: "Hiring contractors can offer flexibility and specialized skills without the commitment of a full-time employee. Start by clearly defining the scope of work and desired qualifications. Utilize online platforms, freelance marketplaces, and professional networks to find qualified contractors. Establish clear contracts outlining deliverables, timelines, and payment terms. Communication and project management tools can help facilitate collaboration with remote contractors. Ensure compliance with relevant labor laws and tax regulations, and consider factors like cultural fit and reliability when selecting contractors. Regular feedback and performance evaluations can help maintain quality and efficiency in contractor relationships.",
-      img: "/Hirings/contractor.jpg",
+      img: "/hiringcontractor.jpg",
     },
     {
       title: "HR Dashboard",
       subTitle: "Visibility and Control Of All Things HR Through One Platform",
       des: "An HR dashboard is a centralized tool that provides key insights and metrics related to various aspects of human resources management. It typically includes data on employee demographics, recruitment and hiring metrics, employee performance and engagement, turnover rates, training and development initiatives, and other relevant HR KPIs. The dashboard enables HR professionals and decision-makers to track trends, identify areas for improvement, and make data-driven decisions to optimize workforce management strategies. Visualizations such as charts, graphs, and tables make it easy to interpret and analyze HR data quickly. Additionally, customizable features allow organizations to tailor the dashboard to their specific needs and objectives.",
-      img: "/Hirings/dashboard.jpg",
+      img: "/hrdashboard.jpg",
     },
     {
       title: "Source Global Talent",
       subTitle: "Hire Global Talent With Placement Plaza",
       des: "Source Global Talent Sourcing global talent involves leveraging online platforms like LinkedIn and international job boards, partnering with recruitment agencies, and networking with professionals worldwide. Utilizing employee referrals and engaging with remote work platforms and social media can also expand your reach. Additionally, collaborating with universities and cultural organizations helps access skilled graduates and diverse talent pools. By combining these strategies, businesses can effectively source global talent to drive innovation and growth.",
-      img: "/Hirings/global-talent.jpg",
+      img: "/hiringsourcegolobaltalent.jpg",
     },
   ];
 

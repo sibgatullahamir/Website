@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
@@ -7,9 +7,9 @@ export default {
         goldenrod: "#DAA520",
       },
       fontSize: {
-        small: "0.875rem", // Example small text size
-        medium: "1rem", // Example medium text size
-        large: "1.125rem", // Example large text size
+        small: "0.875rem",
+        medium: "1rem",
+        large: "1.125rem",
       },
       animation: {
         slider: "slider 10s infinite linear",
