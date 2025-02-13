@@ -2,9 +2,9 @@ const EmpDetails = [
   {
     name: "Md Sibgatullah Amir",
     phNum: "7970942455",
-    email: "amir@placementplaza.com",
+    email: "sibgatullah.amir@placementplaza.com",
     companyId: "2022CTO344",
-    post: "Chief Technical Officer",
+    post: "Software Engineer",
     qualifications:
       "Bachelor Of Technology In Computer Science & Engineering from Accurate Institute Of Management & Technology",
     img: "/EmpDetails/amir.jpeg",
