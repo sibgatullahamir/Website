@@ -77,7 +77,7 @@ const Header = () => {
 
         <div className="flex-1 flex justify-end items-center gap-2.5">
           <button className="p-2.5 border border-gray-400 bg-white text-[16px] text-[#003e71] font-semibold cursor-pointer rounded-lg transition-all duration-500 hover:bg-[#003e71] hover:text-white">
-            {"Log In"}
+            {"TeamTreak"}
           </button>
           <button
             className="p-2.5 border border-gray-400 bg-[#003e71] text-[16px] text-white font-medium cursor-pointer rounded-lg transition-all duration-500 hover:bg-blue-100 hover:text-[#003e71]"

@@ -55,7 +55,7 @@ const Contact = () => {
               Email : info@placementplaza.com
             </p>
             <p className="w-64 text-sm font-semibold max-sm:w-full">
-              Phone : 7970942455
+              Phone : 9572745274
             </p>
           </div>
 
