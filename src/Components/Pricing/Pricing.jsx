@@ -5,6 +5,9 @@ import PopUp from "../PopUp/PopUp";
 import fetchCountryCodesAndFlags from "../../action/countryCode";
 import { useNavigate } from "react-router-dom";
 import CustomSelect from "../../CustomComp/CustomSelect";
+import Header from "../Header/Header";
+import HeaderPhone from "../HeaderPhone/HeaderPhone";
+import Footer from "../Footer/Footer";
 
 const Pricing = () => {
   const form = useRef();
@@ -29,7 +32,6 @@ const Pricing = () => {
   };
 
   // Email Js --- Connection -------------------------->
-
   const sendEmail = (e) => {
     e.preventDefault();
     if (isValid) {
@@ -60,252 +62,199 @@ const Pricing = () => {
 
   // fetching country codes
   const [countryCodes, setCountryCodes] = useState([]);
-  // const [selectedCode, setSelectedCode] = useState("+91");
-  const [selectedFlag, setSelectedFlag] = useState(
-    "https://flagcdn.com/in.svg"
-  );
+  const [selectedFlag, setSelectedFlag] = useState("https://flagcdn.com/in.svg");
+  
   useEffect(() => {
     const getCountries = async () => {
       const countryData = await fetchCountryCodesAndFlags();
       setCountryCodes(countryData);
-      // console.log(countryData);
     };
     getCountries();
-
     setValue("");
   }, []);
 
-  const handleOptionChange = (code) => {
-    const selectedOption = countryCodes.find((option) => option.code === code);
-    if (selectedOption) {
-      setSelectedFlag(selectedOption.flag);
-    }
-  };
   // validations ----------------------------------------->
   const [val, setValue] = useState("");
   const handleChange = (e) => {
     setValue(e.target.value);
   };
+  
   const [email, setEmail] = useState("");
-  // List of common free email domains
-  const freeEmailDomains = [
-    "gmail.com",
-    "yahoo.com",
-    "hotmail.com",
-    "outlook.com",
-    "aol.com",
-    "icloud.com",
-    "mail.com",
-    "zoho.com",
-    "protonmail.com",
-    "yandex.com",
-    "gmx.com",
-  ];
   const handleEmailChange = (e) => {
     const value = e.target.value;
     setEmail(value);
 
     // Regular expression for basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (emailRegex.test(value)) {
-      setIsValid(true);
-    } else {
-      setIsValid(false);
-    }
+    setIsValid(emailRegex.test(value));
   };
 
-  const [msg, setMsg] = useState("");
-
   return (
-    <div className="pricing">
-      <div className="top" onClick={() => navigate("/")}>
-        <img src="/logo.png" alt="" />
-      </div>
-
-      <div
-        className="bottom prc-bottom"
-        style={
-          (isLoading === true) | (isSent === true)
-            ? { opacity: "0.1" }
-            : { opacity: "1" }
-        }
-      >
-        <h2>QUOTATION FORM</h2>
-        <h3>
-          PLEASE FILL IN THE FORM BELOW <span style={{ color: "red" }}>*</span>
-        </h3>
-        <div className="pricing-form">
-          <form ref={form} onSubmit={sendEmail}>
-            <div className="left">
-              {/* For comany name */}
-              <div className="input-wrapper">
-                <label>
-                  Company Name <span style={{ color: "red" }}>*</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Company Name"
-                  name="company"
-                  required
-                />
-              </div>
-
-              {/* for Number */}
-              <div className="input-wrapper">
-                <label>Contact Number</label>
-                <span style={{ width: "21rem", display: "flex", gap: "10px" }}>
-                  <input
-                    name="code"
-                    type="text"
-                    value={code}
-                    style={{ display: "none" }}
-                  />
-                  <CustomSelect
-                    bg="rgba(255, 255, 255, 0.7)"
-                    setCode={setCode}
-                  />
-                  <input
-                    value={val}
-                    name="number"
-                    type="number"
-                    placeholder="Number"
-                    // maxLength={13}
-                    onChange={handleChange}
-                    style={{ width: "13.2rem" }}
-                  />
-                </span>
-              </div>
-
-              {/* For Buisness Email */}
-              <div className="input-wrapper">
-                <label>
-                  Business Email <span style={{ color: "red" }}>*</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Email"
-                  name="email"
-                  required
-                  value={email}
-                  onChange={handleEmailChange}
-                />
-              </div>
-
-              {/* Hiring Location */}
-              <div className="input-wrapper">
-                <label>
-                  Hiring Location <span style={{ color: "red" }}>*</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Location"
-                  name="location"
-                  required
-                />
-              </div>
-            </div>
-            <div className="left right">
-              {/* For comany Website */}
-              <div className="input-wrapper">
-                <label>
-                  Website URL <span style={{ color: "red" }}>*</span>
-                </label>
-                <input type="text" placeholder="url" required name="url" />
-              </div>
-
-              {/* Timeline and budget  */}
-              <div className="input-wrapper">
-                <label>
-                  Timeline <span style={{ color: "red" }}>*</span> and Budget
-                </label>
-                <span style={{ display: "flex", gap: "5px" }}>
-                  <select name="timeline" id="" style={{ width: "7rem" }}>
-                    <option value="Timeline">Timeline</option>
-                    <option value="Immediately">Immediately</option>
-                    <option value="1-6 Months">1-6 Months</option>
-                    <option value="6-12 Months">6-12 Months</option>
-                    <option value="1+ year">1+ year</option>
-                  </select>
-                  <select name="budget" id="" style={{ width: "7rem" }}>
-                    <option value="$">&#36; </option>
-                    <option value="₹">&#x20b9;</option>
-                  </select>
-                  <input
-                    type="number"
-                    style={{ width: "5rem" }}
-                    placeholder="Budget"
-                    required
-                    name="cost"
-                  />
-                </span>
-              </div>
-
-              {/* For comany Information */}
-              <div className="input-wrapper">
-                <label>Brief About the Company </label>
-                <input
-                  type="text"
-                  placeholder="About your company"
-                  name="intro"
-                />
-              </div>
-
-              {/* Requirments */}
-              <div className="input-wrapper">
-                <label>
-                  Company Requirments <span style={{ color: "red" }}>*</span>{" "}
-                </label>
-                <input
-                  type="text"
-                  placeholder="Requirments"
-                  required
-                  name="req"
-                />
-              </div>
-            </div>
-            {/* Hidden tags for function */}
-            <input type="text" hidden value={msg} name="message" />
-            <button style={{ display: "none" }} id="form-submit-btn">
-              formSubmit
-            </button>
-          </form>
-
-          {/* Queries */}
-          <div className="more-queries">
-            {/* <div className="top"></div> */}
-            <div className="bottom">
-              <textarea
-                name=""
-                id=""
-                placeholder="Tell us more about the project in detail"
-                onChange={(e) => setMsg(e.target.value)}
-              ></textarea>
-            </div>
-          </div>
-
-          <div
-            className="pricing-btns"
-            style={{
-              width: "100%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: "20px",
-            }}
+    <>
+      {window.innerWidth > 900 ? <Header /> : <HeaderPhone />}
+      <div className="bg-gray-50 min-h-screen py-16">
+        <div className="max-w-4xl mx-auto px-4">
+          <div 
+            className="bg-white rounded-xl shadow-lg overflow-hidden"
+            style={(isLoading || isSent) ? { opacity: "0.2" } : { opacity: "1" }}
           >
-            {/*Submit - btn */}
-            <button className="submit-btn" onClick={handleClick}>
-              Submit
-            </button>
-            {/* Go back #btn */}
-            <button
-              className="submit-btn"
-              onClick={() => navigate("/")}
-              style={{ background: "goldenrod", color: "black" }}
-            >
-              Go back
-            </button>
+            {/* Header */}
+            <div className="bg-blue-600 py-8 px-6 text-white">
+              <h2 className="text-2xl md:text-3xl font-bold text-center">PAYROLL SERVICE QUOTATION</h2>
+              <p className="text-sm md:text-base text-center mt-2 text-blue-100">
+                REQUEST YOUR CUSTOMIZED PAYROLL SOLUTION <span className="text-yellow-300">*</span>
+              </p>
+            </div>
+            
+            {/* Form */}
+            <div className="p-6 md:p-10">
+              <form ref={form} onSubmit={sendEmail} className="space-y-6">
+                {/* Two column layout for larger screens */}
+                <div className="grid md:grid-cols-2 gap-6">
+                  {/* Company Name */}
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Company Name <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Enter your company name"
+                      name="company"
+                      required
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-300"
+                    />
+                  </div>
+
+                  {/* Business Email */}
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Business Email <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="Enter your business email"
+                      name="email"
+                      required
+                      value={email}
+                      onChange={handleEmailChange}
+                      className={`w-full px-4 py-3 rounded-lg border ${
+                        !isValid && email ? "border-red-500" : "border-gray-300"
+                      } focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-300`}
+                    />
+                    {!isValid && email && (
+                      <p className="text-red-500 text-xs mt-1">Please enter a valid email address</p>
+                    )}
+                  </div>
+
+                  {/* Contact Number */}
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Contact Number
+                    </label>
+                    <div className="flex gap-2">
+                      <input
+                        name="code"
+                        type="text"
+                        value={code}
+                        style={{ display: "none" }}
+                      />
+                      <div className="w-1/3">
+                        <CustomSelect
+                          bg="white"
+                          setCode={setCode}
+                          className="w-full px-4 py-3 rounded-lg border border-gray-300"
+                        />
+                      </div>
+                      <input
+                        value={val}
+                        name="number"
+                        type="number"
+                        placeholder="Enter your contact number"
+                        onChange={handleChange}
+                        className="w-2/3 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-300"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Company Location */}
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Company Location <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Enter your company location"
+                      name="location"
+                      required
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-300"
+                    />
+                  </div>
+
+                  {/* Number of Employees */}
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Number of Employees <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="number"
+                      placeholder="Enter total number of employees"
+                      name="employee_count"
+                      required
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-300"
+                    />
+                  </div>
+
+                  {/* Payroll Frequency */}
+                  <div className="space-y-2">
+                    <label className="block text-sm font-medium text-gray-700">
+                      Preferred Payroll Frequency <span className="text-red-500">*</span>
+                    </label>
+                    <select 
+                      name="payroll_frequency" 
+                      required
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-300"
+                    >
+                      <option value="">Select frequency</option>
+                      <option value="weekly">Weekly</option>
+                      <option value="biweekly">Bi-weekly</option>
+                      <option value="monthly">Monthly</option>
+                      <option value="custom">Custom</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* Additional Requirements - Full width */}
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700">
+                    Additional Requirements
+                  </label>
+                  <textarea
+                    name="requirements"
+                    placeholder="Tell us about any specific payroll needs (tax compliance, international payments, benefits management, etc.)"
+                    rows="4"
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all duration-300"
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  id="form-submit-btn"
+                  style={{ display: "none" }}
+                ></button>
+              </form>
+
+              <div className="mt-8 text-center">
+                <button
+                  onClick={handleClick}
+                  className="px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-all duration-300 inline-flex items-center gap-2"
+                >
+                  <span>Request Payroll Quote</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -313,7 +262,8 @@ const Pricing = () => {
       {/* pop - up start */}
       <PopUp isLoading={isLoading} isSent={isSent} />
       {/* pop - up ends */}
-    </div>
+      <Footer />
+    </>
   );
 };
 

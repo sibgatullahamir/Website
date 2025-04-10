@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { GrShieldSecurity } from "react-icons/gr";
 import { FaRegFileLines } from "react-icons/fa6";
@@ -9,37 +9,37 @@ import { MdBarChart } from "react-icons/md";
 import { RiGlobalFill } from "react-icons/ri";
 import { FaRegFileImage } from "react-icons/fa";
 
-const Solution = ({ state, type }) => {
+const Solution = ({ state, colTitle, showData, showP }) => {
   const solData = [
     {
-      title: "Stay Compliant",
+      title: "Payroll Processing",
       img: <GrShieldSecurity />,
       nav: "/",
     },
     {
-      title: "Hire Employee",
+      title: "Tax Management",
       img: <FaRegFileLines />,
       nav: "/",
     },
     {
-      title: "Hire Contractors",
+      title: "Benefits Administration",
       img: <FaRegFileLines />,
       nav: "/",
     },
   ];
   const solData2 = [
     {
-      title: "Finance Teams",
+      title: "Small Business",
       img: <RiBarChartGroupedFill />,
       nav: "/",
     },
     {
-      title: "HR Teams",
+      title: "Mid-Market",
       img: <IoIosPeople />,
       nav: "/",
     },
     {
-      title: "Legal Teams",
+      title: "Enterprise",
       img: <GoLaw />,
       nav: "/",
     },
@@ -50,87 +50,62 @@ const Solution = ({ state, type }) => {
       title: "About Us",
       img: <GoStack />,
       nav: "/about-us",
-      p: "Know all about us",
+      p: "Leading payroll solutions provider",
     },
     {
-      title: "Case Studies",
+      title: "Success Stories",
       img: <MdBarChart />,
       nav: "/case",
-      p: "About our customers",
+      p: "See how we transform payroll management",
     },
     {
-      title: "Country Coverage",
-      img: <MdBarChart />,
+      title: "Global Coverage",
+      img: <RiGlobalFill />,
       nav: "/",
-      p: "Hiring in 30+ Countries",
+      p: "Payroll solutions in 30+ countries",
     },
   ];
 
   const resourceData = [
     {
-      title: "Global Hiring Guides",
+      title: "Payroll Guides",
       img: <RiGlobalFill />,
-      p: "Free in depth hirings for you",
+      p: "Comprehensive payroll management guides",
       nav: "/",
     },
-    // {
-    //   title: "Blogs",
-    //   img: <FaRegFileImage />,
-    //   p: "Stay up to date with HR news and blogs",
-    //   nav: "/",
-    // },
     {
-      title: "HR Terms",
+      title: "Tax Resources",
       img: <GrShieldSecurity />,
-      p: "Your HR Terminology handbook",
+      p: "Stay compliant with tax regulations",
+      nav: "/",
+    },
+    {
+      title: "Payroll Calculator",
+      img: <MdBarChart />,
+      p: "Free payroll calculation tools",
       nav: "/",
     },
   ];
 
-  const [showData, setShowData] = useState([]);
-  const [showDataCol2, setShowDataCol2] = useState([]);
-  const [showCol2, setShowCol2] = useState(false);
-  const [colTitle, setColTitle] = useState("");
-  const [showP, setShowP] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
-
-  useEffect(() => {
-    if (type === "solution") {
-      setShowData(solData);
-      setShowCol2(true);
-      setColTitle("Solution");
-      setShowDataCol2(solData2);
-    } else if (type === "about") {
-      setShowData(aboutData);
-      setShowCol2(false);
-      setColTitle("Why Placement Plaza");
-      setShowP(true);
-    } else {
-      setShowData(resourceData);
-      setShowCol2(false);
-      setColTitle("Tools and Resource Center");
-      setShowP(true);
-    }
-  }, [type]);
-
   const navigate = useNavigate();
+  const [isClicked, setIsClicked] = useState(false);
 
   return (
     <div
-      className={`absolute top-12 left-0 z-50 p-2 flex justify-center items-center gap-4 bg-white border border-gray-200 shadow-md ${
+      className={`absolute top-12 left-0 z-50 p-4 flex justify-center items-center gap-4 bg-white border border-gray-200 shadow-md rounded-lg ${
         !state || isClicked ? "hidden" : ""
       }`}
     >
       <div className="w-72 p-2 flex flex-col justify-center items-start gap-2">
-        <h5 className="text-sm text-gray-500">{colTitle}</h5>
+        <h5 className="text-sm text-gray-500 font-medium mb-2">{colTitle}</h5>
         {showData.map((val, i) => (
-          <div key={i} className="flex flex-col items-start gap-2">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-10 bg-blue-200 flex items-center justify-center rounded-md">
+          <div key={i} className="flex flex-col items-start gap-2 w-full mb-2">
+            <div className="flex items-center gap-2 w-full">
+              <div className="w-8 h-8 bg-blue-100 flex items-center justify-center rounded-md">
                 {val.img}
               </div>
               <h3
-                className="text-sm font-medium text-blue-900 cursor-pointer hover:text-blue-300"
+                className="text-sm font-medium text-gray-800 cursor-pointer hover:text-blue-600 transition-all duration-300"
                 onClick={() => {
                   if (val.nav) {
                     navigate(val.nav);
@@ -142,38 +117,14 @@ const Solution = ({ state, type }) => {
                 {val.title}
               </h3>
             </div>
-            {showP && (
-              <p className="text-xs font-medium text-black ml-10 mt-[-12px]">
+            {showP && val.p && (
+              <p className="text-xs text-gray-500 ml-10 mt-[-4px]">
                 {val.p}
               </p>
             )}
           </div>
         ))}
       </div>
-      {showCol2 && (
-        <div className="w-72 p-2 flex flex-col justify-center items-start gap-2">
-          <h5 className="text-sm text-gray-500">By Role</h5>
-          {showDataCol2.map((val, i) => (
-            <div key={i} className="flex items-center gap-2">
-              <div className="w-8 h-10 bg-blue-200 flex items-center justify-center rounded-md">
-                {val.img}
-              </div>
-              <h3
-                className="text-sm font-medium text-blue-900 cursor-pointer hover:text-blue-300"
-                onClick={() => {
-                  if (val.nav) {
-                    navigate(val.nav);
-                    setIsClicked(true);
-                  }
-                  setTimeout(() => setIsClicked(false), 2000);
-                }}
-              >
-                {val.title}
-              </h3>
-            </div>
-          ))}
-        </div>
-      )}
     </div>
   );
 };

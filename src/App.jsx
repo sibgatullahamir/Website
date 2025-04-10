@@ -10,6 +10,7 @@ import Employee from "./Components/Employee/Employee";
 import Pricing from "./Components/Pricing/Pricing";
 import UndefinedRoute from "./Components/UndefinedRoute/UndefinedRoute";
 import BlogMain from "./Components/Blogs/BlogMain";
+import Careers from "./Components/Careers/Careers";
 
 
 
@@ -40,6 +41,7 @@ const App = () => {
         {/* <Route path="/login" Component={Login} /> */}
         <Route path="/employee_detail/:id" Component={Employee} />
         <Route path="/pricing" Component={Pricing} />
+        <Route path="/careers" Component={Careers} />
         <Route path="*" element={<UndefinedRoute />} />
         <Route path="/blogmain/*" element={<BlogMain />} /> {/* BlogMain will handle all blog routes */}
 

@@ -78,10 +78,10 @@ const AIChatbot = () => {
     setIsTyping(true);
     setInput("");
     
-    // Enhanced knowledge base for AI responses with industry-specific information
+    // Expanded knowledge base for AI responses with industry-specific information
     const knowledgeBase = {
       // Company Information
-      "about company": "Placement Plaza has been providing payroll and HR solutions since 2010. We serve over 10,000 businesses globally, from startups to enterprises with our advanced payroll solutions.",
+      "about company": "Placement Plaza, powered by TeamTreak HRMS, has been providing payroll and HR solutions since 2010. We serve over 10,000 businesses globally, from startups to enterprises.",
       "locations": "Our headquarters is in Bangalore, India, with additional offices across major cities in India, the US, UK, Singapore, and Australia. We serve clients worldwide.",
       "team": "Our team includes payroll specialists, tax experts, HR professionals, and customer support representatives dedicated to ensuring your success.",
       "competitors": "While we compete with other payroll providers, our integrated approach combining payroll, HR, and hiring solutions sets us apart. We focus on user experience and customer satisfaction.",
@@ -148,6 +148,15 @@ const AIChatbot = () => {
       "multi-department": "For employees working across multiple departments, our system allows you to allocate time and costs accordingly, generating detailed reports for each department.",
       "tipped employees": "Our system handles tipped employees with compliance for tip reporting, tip credits, allocation, and relevant tax calculations based on local regulations.",
       
+      // Troubleshooting
+      "incorrect pay": "If an employee reports incorrect pay, first verify the time records and pay settings. You can process an off-cycle payment to correct errors. Our support team can help with specific situations.",
+      "payroll error": "If you discover an error after submitting payroll, contact our support team immediately. Depending on the timing and nature of the error, we can help with cancellation or correction.",
+      "login issues": "For login problems, try clearing your browser cache, using the password reset function, or checking your internet connection. Our support team can assist if these steps don't resolve the issue.",
+      "tax filing error": "For tax filing errors, contact our support team with details of the error. We can work with tax agencies to file amendments and ensure proper resolution.",
+      "report issues": "If reports aren't generating correctly, try refreshing the page or using a different browser. For persistent issues, contact support with details about the specific report and error.",
+      "system access": "If you notice unauthorized system access, immediately contact our security team at security@placementplaza.com or call our emergency hotline. We'll help secure your account and investigate.",
+      "slow performance": "If experiencing slow system performance, try clearing your browser cache, using a wired internet connection, and closing unnecessary browser tabs. Contact support if issues persist.",
+      
       // Technology & Innovation
       "ai features": "We leverage AI for anomaly detection in payroll, predictive analytics for workforce planning, and smart automation of routine tasks. Our system constantly learns from patterns to improve accuracy.",
       "automation": "Our platform automates calculations, tax updates, report generation, and common workflows to reduce manual effort and minimize errors in your payroll processes.",
@@ -165,13 +174,13 @@ const AIChatbot = () => {
       "employee engagement": "Our employee engagement solutions include pulse surveys, recognition tools, feedback mechanisms, and analytics to help you build a motivated workforce.",
       "succession planning": "Our succession planning tools help identify high-potential employees, develop talent pipelines, and ensure business continuity for critical roles.",
       
-      // Conversational responses
+      // Greeting Responses
       "hello": "Hello! How can I assist you with our payroll and HR solutions today?",
       "thanks": "You're welcome! Is there anything else I can help you with today?",
       "bye": "Thank you for chatting with us. If you need further assistance, feel free to return anytime. Have a great day!",
       "help": "I'm here to help! You can ask me about our payroll services, pricing, features, implementation process, or any specific questions about HRMS. What would you like to know?",
       
-      // Pricing & Contract Terms
+      // Pricing & Contract Terms - NEW ENTRIES
       "pricing models": "We offer flexible pricing models tailored to your business size and needs. Our plans include Basic (essential payroll processing), Professional (added HR tools), and Enterprise (full-suite solution). We also provide custom pricing for unique requirements.",
       "pricing tiers": "Our pricing structure is based on the number of employees and selected features. Basic starts at $4 per employee per month, Professional at $8, and Enterprise at $12. Volume discounts are available for larger organizations.",
       "free trial": "Yes, we offer a 30-day free trial of our Professional plan with full access to all features. No credit card is required to start your trial, and our team will provide guided onboarding assistance.",
@@ -180,7 +189,7 @@ const AIChatbot = () => {
       "payment methods": "We accept all major credit cards, ACH transfers, and wire transfers. We can also accommodate purchase orders for enterprise clients with established credit.",
       "refund policy": "If you're not satisfied with our service within the first 90 days, we offer a money-back guarantee. After this period, we provide prorated refunds for unused service if you decide to cancel.",
       
-      // Payroll Processing
+      // Payroll Processing - NEW ENTRIES
       "payroll cycles": "Our system supports all common payroll cycles including weekly, bi-weekly, semi-monthly, and monthly. You can also run special or off-cycle payrolls as needed without additional fees.",
       "direct deposit": "Yes, we offer direct deposit to any bank account in the country. Funds are typically available to employees on payday, with processing beginning 2 business days before the pay date.",
       "paper checks": "Yes, we can print and mail physical checks to your office or directly to employees. This service has an additional fee of $1.50 per check. We also offer check stuffing and distribution services.",
@@ -191,7 +200,7 @@ const AIChatbot = () => {
       "year-end taxes": "Our service includes preparation and filing of all year-end tax forms including W-2s, 1099s, and ACA forms. We electronically file with the IRS and state agencies, and provide digital copies to employees.",
       "tax amendments": "If tax amendments are required, our team can prepare and file corrections promptly. For amendments due to our error, there's no additional charge. For client-caused amendments, a nominal fee applies.",
       
-      // HR Compliance
+      // HR Compliance - NEW ENTRIES
       "hr compliance": "Our compliance features help you navigate complex regulations including FLSA, ACA, FMLA, and state-specific requirements. We provide automatic updates when laws change and alerting for potential compliance issues.",
       "eeoc reporting": "Our system generates EEOC reports including EEO-1 Component 1 and Component 2 data. The reports can be exported in various formats including the government-required formats for direct submission.",
       "i-9 verification": "Our electronic I-9 verification system streamlines the employment eligibility verification process. It guides employees and employers through form completion and integrates with E-Verify for instant verification.",
@@ -200,7 +209,57 @@ const AIChatbot = () => {
       "affordable care act": "Our ACA compliance tools track employee eligibility, determine full-time status, monitor measurement periods, generate 1095-C forms, and create 1094-C transmittal files for accurate ACA reporting.",
       "fmla tracking": "Our FMLA tracking system helps manage employee leave requests, tracks available leave time, sends notifications for required certifications, and monitors concurrent leave types.",
       
-      // Industry-Specific Solutions
+      // HR Analytics - NEW ENTRIES
+      "hr analytics": "Our analytics platform provides insights into workforce costs, turnover, performance, and other key metrics. You can create custom dashboards, schedule reports, and identify trends with predictive analytics.",
+      "employee turnover": "Our turnover analysis tools help identify patterns and causes of employee departures. The system calculates turnover rates by department, manager, and other factors, helping you address retention issues proactively.",
+      "cost forecasting": "Our forecasting tools use historical data and trend analysis to project future labor costs. You can model different scenarios including headcount changes, compensation adjustments, and benefit modifications.",
+      "diversity metrics": "Our diversity analytics provide insights into workforce composition, hiring practices, pay equity, and career advancement across different demographic groups to support inclusive workplace initiatives.",
+      
+      // HR Processes - NEW ENTRIES
+      "employee onboarding": "Our digital onboarding solution streamlines the new hire process with electronic forms, document collection, task management, and guided workflows for both HR teams and new employees.",
+      "employee offboarding": "Our offboarding process ensures consistent handling of departing employees with automated checklist management, access revocation, exit interviews, and compliance documentation.",
+      "performance reviews": "Our performance management system supports various review types including annual, 360-degree, and continuous feedback. It streamlines goal setting, competency assessments, and development planning.",
+      "learning management": "Our LMS provides a centralized platform for employee training and development. Features include course creation, skills assessments, certification tracking, and compliance training management.",
+      "applicant tracking": "Our recruitment system manages the entire hiring process from job requisition to offer acceptance. It includes candidate sourcing, resume parsing, interview scheduling, and collaborative hiring team workflows.",
+      "document management": "Our secure document management system stores and organizes HR documents with role-based access controls. It supports electronic signatures, version control, and automated retention policies.",
+      
+      // User Experience - NEW ENTRIES
+      "mobile experience": "Our mobile apps for iOS and Android provide on-the-go access to essential HR and payroll functions. Employees can view pay statements, request time off, submit expenses, and update personal information.",
+      "accessibility features": "Our platform is designed with accessibility in mind, complying with WCAG guidelines. Features include screen reader compatibility, keyboard navigation, color contrast options, and text resizing.",
+      "language support": "Our platform supports multiple languages including English, Spanish, French, German, Portuguese, Chinese, and Japanese. Employees can select their preferred language for a personalized experience.",
+      "data export": "You can export data in various formats including CSV, Excel, PDF, and API integrations. Scheduled exports can be automatically delivered via email or secure file transfer.",
+      "customization": "Our platform offers extensive customization options including branded portals, custom fields, personalized workflows, tailored reports, and configurable security roles to match your specific processes.",
+      
+      // Data Ownership - NEW ENTRIES
+      "data ownership": "You retain full ownership of all your data. We act as a processor under data protection laws, handling your information according to our service agreement and applicable regulations.",
+      "data extraction": "If you decide to leave our service, we provide a complete export of your data in standard formats that can be imported into most systems. Our team assists with the data extraction process at no additional cost.",
+      "data backup": "We maintain multiple backups of your data with point-in-time recovery capabilities. Daily backups are retained for 30 days, weekly backpoints for 3 months, and monthly archives for 7 years.",
+      
+      // Implementation Details - NEW ENTRIES
+      "implementation steps": "Our implementation follows a proven 5-step process: 1) Discovery & Planning, 2) System Configuration, 3) Data Migration, 4) Testing & Validation, 5) Training & Go-Live. Each phase is guided by your dedicated implementation specialist.",
+      "implementation team": "Your implementation team includes a project manager, configuration specialist, data migration expert, and training coordinator. For enterprise clients, we also assign a solution architect and technical integration specialist.",
+      "implementation success": "Our implementation success rate is 99.8%, with 95% of clients going live on or before their target date. We provide a detailed project plan with milestones and regular progress updates throughout the process.",
+      
+      // Industry Recognition - NEW ENTRIES
+      "client testimonials": "Our clients consistently praise our intuitive interface, responsive support, and comprehensive features. Case studies and testimonials are available on our website, showcasing success stories across various industries and company sizes.",
+      "industry awards": "In addition to being recognized as 'Best Payroll Software' and 'Top HRMS Solution', we've received the 'Innovation in HR Technology' award from HR Tech Outlook and a 'Customer Service Excellence' award from the Customer Service Institute.",
+      
+      // Payroll Process - NEW ENTRIES
+      "payroll processing steps": "Our payroll processing involves: 1) Time data collection/approval, 2) Pre-processing review, 3) Payroll calculation, 4) Audit and approval, 5) Payment processing, 6) Tax filing, and 7) Reporting and analytics.",
+      "payroll approval workflow": "Our approval workflow is customizable with multiple levels if needed. Typically, department managers approve time, payroll specialists review pre-processing reports, and payroll managers provide final approval before submission.",
+      "payroll calendar": "Our system includes a customizable payroll calendar that displays all processing deadlines, bank holidays, tax due dates, and compliance deadlines. Email reminders are sent automatically for upcoming deadlines.",
+      "audit trail": "Every action in the system is recorded in a comprehensive audit trail, showing who made changes, what was changed, and when the change occurred. This provides accountability and helps with compliance requirements.",
+      
+      // Customer Experience - NEW ENTRIES
+      "client reviews": "We maintain a 4.8/5 rating across major review platforms. Clients particularly value our responsive support, intuitive interface, accuracy, and continuous improvement through regular updates.",
+      "why choose us": "Clients choose us for our comprehensive platform that combines payroll, HR, and compliance in one system; our dedicated support model; our industry-leading security practices; and our commitment to continuous innovation.",
+      "customer satisfaction": "Our customer satisfaction rate is 98%, and our client retention rate is 97%. We conduct regular satisfaction surveys and maintain a client advisory board to ensure we're meeting and exceeding expectations.",
+      
+      // Financial Operations - NEW ENTRIES
+      "bank connection": "Our system connects with over 15,000 financial institutions for secure, automated bank transfers. We use industry-standard encryption and security protocols to protect all financial transactions.",
+      "reconciliation": "Our reconciliation tools help match payroll records with bank statements, identifying any discrepancies automatically. The system provides detailed reports for accounting and audit purposes.",
+      
+      // Industry-Specific Solutions - NEW ENTRIES
       "healthcare industry": "Our healthcare industry solution addresses unique challenges including shift differentials, credential tracking, overtime calculations, and compliance with healthcare-specific regulations such as HIPAA.",
       "manufacturing industry": "For manufacturing businesses, we offer specialized features including production-based incentives, shift premiums, union payroll support, and integration with production management systems.",
       "retail industry": "Our retail-focused solution handles commission structures, seasonal staffing fluctuations, multi-location management, and compliance with predictive scheduling laws and regulations.",
@@ -208,7 +267,19 @@ const AIChatbot = () => {
       "nonprofit organizations": "Our nonprofit solution includes grant allocation tracking, volunteer time management, Form 990 reporting assistance, and special tax considerations for nonprofit entities.",
       "professional services": "For professional services firms, our system handles project-based billing, utilization tracking, professional license management, and complex compensation structures.",
       
-      // Services Overview
+      // Compliance Updates - NEW ENTRIES
+      "state minimum wage": "Our system automatically updates with state minimum wage changes. We monitor legislation across all states and implement changes before effective dates to ensure your payroll remains compliant.",
+      "paid sick leave": "We track and implement paid sick leave laws across different jurisdictions. Our system calculates accruals, tracks usage, and generates required reports for compliance with various state and local requirements.",
+      "overtime regulations": "Our system ensures compliance with federal and state overtime regulations, including different calculation methods required by various jurisdictions and special rules for certain industries.",
+      "pay equity laws": "We provide tools to help you comply with pay equity laws, including reports to identify potential disparities, documentation features for justifying pay differences, and analytics to track progress over time.",
+      
+      // System Capabilities - NEW ENTRIES
+      "concurrent users": "Our system supports unlimited concurrent users without performance degradation. Role-based access controls ensure each user has appropriate permissions based on their job responsibilities.",
+      "system uptime": "We maintain a 99.99% uptime guarantee for our production environment. Our infrastructure includes redundant systems, load balancing, and automated failover to minimize any possible disruptions.",
+      "scalability": "Our platform scales seamlessly with your business growth. Whether you're adding employees, expanding to new locations, or acquiring companies, our system adapts without requiring significant reconfiguration.",
+      "year-end processing": "Our comprehensive year-end processing tools simplify what's typically a stressful period. We provide checklists, automated validation, early access to forms, and dedicated support during the busy season.",
+      
+      // Services Overview - NEW ENTRIES
       "services": "Our services include payroll processing, tax filing, HR management, benefits administration, time and attendance tracking, recruiting and onboarding, and compliance support. We offer both software solutions and managed services options.",
       "managed services": "Our managed services option provides you with a dedicated payroll specialist who handles your entire payroll process. This includes data collection, processing, reporting, tax filings, and resolving any issues that arise.",
       "payroll outsourcing": "When you outsource your payroll to us, you gain access to our expertise, technology, and scale. This reduces your administrative burden, ensures compliance, and allows your team to focus on strategic initiatives.",
@@ -216,9 +287,9 @@ const AIChatbot = () => {
     };
     
     // Default response if no keywords match
-    let responseText = "Thank you for your question. While I don't have the specific information on that topic, our team would be happy to provide a detailed answer. Please contact us through the 'Client Connect' button to speak with a specialist, or ask me about our payroll services, features, pricing, or implementation process.";
+    let responseText = "Thank you for your question. While I don't have the specific information on that topic, our team would be happy to provide a detailed answer. Please use the 'Schedule Consultation' button to connect with our specialists, or ask me about our payroll services, features, pricing, or implementation process.";
     
-    // Improved fuzzy matching function for better response matching
+    // Enhanced fuzzy matching function for better response matching
     const fuzzyMatch = (queryText, keywordText) => {
       const query = queryText.toLowerCase();
       const keyword = keywordText.toLowerCase();
@@ -408,7 +479,7 @@ const AIChatbot = () => {
       ) : (
         <button
           onClick={toggleChatbot}
-          className="fixed bottom-6 right-6 z-40 flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 pulse-button"
+          className={`fixed bottom-6 right-6 z-40 flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-r from-indigo-600 to-blue-600 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 pulse-button`}
         >
           <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
@@ -530,32 +601,20 @@ const Home = () => {
         </motion.div>
 
         {/* Trusted By Section */}
-        <div className="w-full bg-gray-50 py-12 overflow-hidden">
+        <div className="w-full bg-gray-50 py-12">
           <div className="max-w-screen-xl mx-auto px-4">
             <h3 className="text-center text-gray-700 font-medium mb-10">
               Trusted by leading companies
-            </h3>
-            <div className="relative marquee-container">
-              <div className="animate-marquee flex whitespace-nowrap">
-                {companiesData.map((logo, i) => (
-                  <div key={i} className="mx-6 flex-shrink-0">
-                    <img
-                      src={logo}
-                      alt={`Company ${i}`}
-                      className="h-12 object-contain opacity-70 hover:opacity-100 transition-all duration-300"
-                    />
-                  </div>
-                ))}
-                {companiesData.map((logo, i) => (
-                  <div key={i + 'dup'} className="mx-6 flex-shrink-0">
-                    <img
-                      src={logo}
-                      alt={`Company ${i}`}
-                      className="h-12 object-contain opacity-70 hover:opacity-100 transition-all duration-300"
-                    />
-                  </div>
-                ))}
-              </div>
+          </h3>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center justify-items-center">
+              {companiesData.slice(0, 5).map((logo, i) => (
+                <img
+                  key={i}
+                  src={logo}
+                  alt={`Company ${i}`}
+                  className="h-12 object-contain opacity-70 hover:opacity-100 transition-all duration-300"
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -887,6 +946,26 @@ const Home = () => {
       
       {/* AI Chatbot */}
       <AIChatbot />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div className="text-center">
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900">
+            Powered by TeamTreak HRMS
+          </h2>
+          <p className="mt-4 text-xl text-gray-500 max-w-3xl mx-auto">
+            Leverage our TeamTreak HRMS to streamline your payroll operations with unmatched accuracy and efficiency.
+          </p>
+        </div>
+
+        <div className="mt-12 flex justify-center">
+          <button 
+            className="px-8 py-4 bg-gradient-to-r from-indigo-600 to-blue-600 text-white font-medium rounded-lg shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5"
+            onClick={() => window.open("https://teamtreak.com", "_blank")}
+          >
+            Explore TeamTreak HRMS
+          </button>
+        </div>
+      </div>
     </>
   );
 };
